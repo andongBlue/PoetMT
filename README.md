@@ -41,27 +41,34 @@ We also propose **RAT (Retrieval-Augmented Translation)**, which integrates hist
 ## 📂 Dataset
 
 - **PoetMT Dataset**
+  - Dataset in  `\all_poems`
   - Human expert translations  
   - Supports **sentence-level adequacy** & **discourse-level elegance** tasks  
 
 - **Knowledge Base**
-  - 30,000+ classical poems with:  
+  - 30,000+ classical poems with:
+    -  Knowledge Base dataset in `\poem_knowledge_base_split_files`
     - Dynasty & historical background  
     - Modern Chinese translations  
     - Author introductions  
     - Poetic structure & analysis  
 
 ---
+## ⚙️ Evaluation Usage
 
-## 📊 Results
+We provide scripts to reproduce the evaluation of classical Chinese poetry translations.  
+The evaluation supports both **automatic metrics** and **LLM-based judging prompts**.
 
-| Method       | COMET ↑ | BLEURT ↑ | LLM-BM ↑ | LLM-BS ↑ | LLM-BF ↑ | LLM-Avg ↑ |
-|--------------|---------|----------|----------|----------|----------|-----------|
-| GPT-4        | 60.3    | 43.0     | 4.0      | 3.7      | 3.6      | 3.8       |
-| ChatGPT      | 61.1    | 42.4     | 3.3      | 3.2      | 2.9      | 3.1       |
-| **RAT (Ours)** | **62.7** | **43.9** | **4.1** | **3.9** | **3.9** | **4.0**   |
+### 1. Prepare Environment
+```bash
+git clone https://github.com/your-repo/PoetMT.git
+cd PoetMT
 
-📌 **RAT outperforms all baselines**, especially in **Elegance (BM)**, aligning closely with human evaluation.
+python evaluate\evaluate.py \
+  --model gpt-4 \
+  --dataset data/poetmt/test.json \
+  --metrics bleu comet bleurt llm
+```
 
 ---
 
