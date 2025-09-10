@@ -64,7 +64,7 @@ The evaluation supports both **automatic metrics** and **LLM-based judging promp
 git clone https://github.com/your-repo/PoetMT.git
 cd PoetMT
 
-python evaluate\evaluate.py \
+python evaluate\poem_evaluate.py \
   --model gpt-4 \
   --dataset data/poetmt/test.json \
   --metrics bleu comet bleurt llm
